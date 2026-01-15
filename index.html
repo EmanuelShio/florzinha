@@ -51,11 +51,11 @@
             URL_REDIRECIONAMENTO: 'https://www.tudogostoso.com.br/receita/309779-bolo-de-chocolate-simples.html',
             
             // URL da página principal (produto)
-            URL_PRODUTO: 'https://site696969.vercel.app/',
+            URL_PRODUTO: 'https://alfabetizacao-alegre.vercel.app',
             
             // Parâmetro necessário na URL
-            PARAMETRO_OBRIGATORIO: 'ref',
-            VALOR_PARAMETRO: 'kw'
+            PARAMETRO_OBRIGATORIO: 'utm_source',
+            VALOR_PARAMETRO: 'KW-'  // Aceita qualquer valor que comece com KW-
         };
 
         // ==========================================
@@ -94,7 +94,8 @@
         function temParametroCorreto() {
             const urlParams = new URLSearchParams(window.location.search);
             const valor = urlParams.get(CONFIG.PARAMETRO_OBRIGATORIO);
-            return valor === CONFIG.VALOR_PARAMETRO;
+            // Verifica se o valor COMEÇA com o padrão configurado
+            return valor && valor.startsWith(CONFIG.VALOR_PARAMETRO);
         }
 
         // Detecta comportamento suspeito (verificações extras)
