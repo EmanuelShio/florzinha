@@ -45,7 +45,7 @@
         // ==========================================
         const CONFIG = {
             // Ative (true) ou desative (false) o cloaker
-            ATIVO: false,
+            ATIVO: true,
             
             // URL para redirecionamento (visitantes não autorizados)
             URL_REDIRECIONAMENTO: 'https://www.tudogostoso.com.br/receita/309779-bolo-de-chocolate-simples.html',
@@ -54,8 +54,8 @@
             URL_PRODUTO: 'https://site696969.vercel.app/',
             
             // Parâmetro necessário na URL
-            PARAMETRO_OBRIGATORIO: 'utm_source',
-            VALOR_PARAMETRO: 'KW-'  // Aceita qualquer valor que comece com KW-
+            PARAMETRO_OBRIGATORIO: 'ref',
+            VALOR_PARAMETRO: 'kw'
         };
 
         // ==========================================
@@ -94,8 +94,7 @@
         function temParametroCorreto() {
             const urlParams = new URLSearchParams(window.location.search);
             const valor = urlParams.get(CONFIG.PARAMETRO_OBRIGATORIO);
-            // Verifica se o valor COMEÇA com o padrão configurado
-            return valor && valor.startsWith(CONFIG.VALOR_PARAMETRO);
+            return valor === CONFIG.VALOR_PARAMETRO;
         }
 
         // Detecta comportamento suspeito (verificações extras)
